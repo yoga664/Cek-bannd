@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cek Status Nomor</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #111, #1f1f1f);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      width: 350px;
+      background: #222;
+      padding: 60px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #00b894;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00d1a0;
+    }
+
+    .hasil {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      display: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .aman {
+      background: #27ae60;
+    }
+
+    .banned {
+      background: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Cek Bannd</h2>
+       by:Yogadev
+
+    <input type="text" id="nomor" placeholder="Masukkan nomor telepon (+62)" />
+
+    <button onclick="cekStatus()">Cek Banned</button>
+
+    <div id="hasil" class="hasil"></div>
+  </div>
+
+  <script>
+    function cekStatus() {
+      const nomor = document.getElementById('nomor').value;
+      const hasil = document.getElementById('hasil');
+
+      if (nomor.trim() === '') {
+        alert('Masukkan nomor telepon dulu');
+        return;
+      }
+
+      // Simulasi status random
+      const status = Math.random() < 0.5;
+
+      hasil.style.display = 'block';
+
+      if (status) {
+        hasil.className = 'hasil aman';
+        hasil.innerHTML = `✅ Nomor ${nomor} TERBANNED😈`;
+      } else {
+        hasil.className = 'hasil banned';
+        hasil.innerHTML = `❌ Nomor ${nomor} TIDAK TERBANNED😔`;
+      }
+    }
+  </script>
+
+</body>
+</html>
